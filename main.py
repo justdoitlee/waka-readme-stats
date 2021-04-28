@@ -288,6 +288,13 @@ def generate_commit_list(tz):
 
     return string
 
+def this_week() -> str:
+    '''Returns a week streak'''
+    week_end = datetime.datetime.today() - datetime.timedelta(days=1)
+    week_start = week_end - datetime.timedelta(days=7)
+    print("Week header created")
+    return f"Week: {week_start.strftime('%d %B, %Y')} - {week_end.strftime('%d %B, %Y')}"
+
 
 def get_waka_time_stats():
     stats = '```text\n'+this_week()+'\n\n'
