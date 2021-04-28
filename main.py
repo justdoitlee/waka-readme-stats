@@ -317,7 +317,7 @@ def get_waka_time_stats():
                 lang_list = no_activity
             else:
                 lang_list = make_list(data['data']['languages'])
-            stats = stats + '💬 ' + translate['Languages'] + ': \n' + lang_list + '\n\n'
+            stats = stats + '💬 ' + '编程语言' + ': \n' + lang_list + '\n\n'
 
         if showEditors.lower() in truthy:
             empty = False
@@ -325,17 +325,17 @@ def get_waka_time_stats():
                 edit_list = no_activity
             else:
                 edit_list = make_list(data['data']['editors'])
-            stats = stats + '🔥 ' + translate['Editors'] + ': \n' + edit_list + '\n\n'
+            stats = stats + '🔥 ' + '常用编辑器' + ': \n' + edit_list + '\n\n'
 
-        if showProjects.lower() in truthy:
-            empty = False
-            if len(data['data']['projects']) == 0:
-                project_list = no_activity
-            else:
-                # Re-order the project list by percentage
-                data['data']['projects'] = sorted(data['data']['projects'], key=lambda x: x["percent"], reverse=True)
-                project_list = make_list(data['data']['projects'])
-            stats = stats + '🐱‍💻 ' + translate['Projects'] + ': \n' + project_list + '\n\n'
+#         if showProjects.lower() in truthy:
+#             empty = False
+#             if len(data['data']['projects']) == 0:
+#                 project_list = no_activity
+#             else:
+#                 # Re-order the project list by percentage
+#                 data['data']['projects'] = sorted(data['data']['projects'], key=lambda x: x["percent"], reverse=True)
+#                 project_list = make_list(data['data']['projects'])
+#             stats = stats + '🐱‍💻 ' + '项目' + ': \n' + project_list + '\n\n'
 
         if showOs.lower() in truthy:
             empty = False
@@ -343,7 +343,7 @@ def get_waka_time_stats():
                 os_list = no_activity
             else:
                 os_list = make_list(data['data']['operating_systems'])
-            stats = stats + '💻 ' + translate['operating system'] + ': \n' + os_list + '\n\n'
+            stats = stats + '💻 ' + '操作系统' + ': \n' + os_list + '\n\n'
 
         stats += '```\n\n'
         if empty:
