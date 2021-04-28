@@ -248,7 +248,7 @@ def generate_commit_list(tz):
 
     sumAll = morning + daytime + evening + night
     sum_week = Sunday + Monday + Tuesday + Friday + Saturday + Wednesday + Thursday
-#     title = translate['I am an Early'] if morning + daytime >= evening + night else translate['I am a Night']
+    title = translate['I am an Early'] if morning + daytime >= evening + night else translate['I am a Night']
     one_day = [
         {"name": "🌞 " + translate['Morning'], "text": str(morning) + " commits",
          "percent": round((morning / sumAll) * 100, 2)},
@@ -304,7 +304,7 @@ def get_waka_time_stats():
             empty = False
             stats = stats + generate_commit_list(tz=data['data']['timezone']) + '\n\n'
 
-#         stats += '📊 **' + ’划水日记‘ + '** \n\n'
+        stats += '📊 **' + translate['This Week I Spend My Time On'] + '** \n\n'
         stats += '```text\n'
         if showTimeZone.lower() in truthy:
             empty = False
@@ -317,7 +317,7 @@ def get_waka_time_stats():
                 lang_list = no_activity
             else:
                 lang_list = make_list(data['data']['languages'])
-            stats = stats + '💬 ' + '编程语言' + ': \n' + lang_list + '\n\n'
+            stats = stats + '💬 ' + translate['Languages'] + ': \n' + lang_list + '\n\n'
 
         if showEditors.lower() in truthy:
             empty = False
@@ -325,17 +325,17 @@ def get_waka_time_stats():
                 edit_list = no_activity
             else:
                 edit_list = make_list(data['data']['editors'])
-            stats = stats + '🔥 ' + '常用编辑器' + ': \n' + edit_list + '\n\n'
+            stats = stats + '🔥 ' + translate['Editors'] + ': \n' + edit_list + '\n\n'
 
-#         if showProjects.lower() in truthy:
-#             empty = False
-#             if len(data['data']['projects']) == 0:
-#                 project_list = no_activity
-#             else:
-#                 # Re-order the project list by percentage
-#                 data['data']['projects'] = sorted(data['data']['projects'], key=lambda x: x["percent"], reverse=True)
-#                 project_list = make_list(data['data']['projects'])
-#             stats = stats + '🐱‍💻 ' + '项目' + ': \n' + project_list + '\n\n'
+        if showProjects.lower() in truthy:
+            empty = False
+            if len(data['data']['projects']) == 0:
+                project_list = no_activity
+            else:
+                # Re-order the project list by percentage
+                data['data']['projects'] = sorted(data['data']['projects'], key=lambda x: x["percent"], reverse=True)
+                project_list = make_list(data['data']['projects'])
+            stats = stats + '🐱‍💻 ' + translate['Projects'] + ': \n' + project_list + '\n\n'
 
         if showOs.lower() in truthy:
             empty = False
@@ -343,7 +343,7 @@ def get_waka_time_stats():
                 os_list = no_activity
             else:
                 os_list = make_list(data['data']['operating_systems'])
-            stats = stats + '💻 ' + '操作系统' + ': \n' + os_list + '\n\n'
+            stats = stats + '💻 ' + translate['operating system'] + ': \n' + os_list + '\n\n'
 
         stats += '```\n\n'
         if empty:
@@ -381,7 +381,7 @@ def generate_language_per_repo(result):
             "percent": percent
         })
 
-#     title = translate['I Mostly Code in'] % most_language_repo
+    title = translate['I Mostly Code in'] % most_language_repo
     return '**' + title + '** \n\n' + '```text\n' + make_list(data) + '\n\n```\n'
 
 
@@ -458,7 +458,7 @@ def get_stats(github):
         loc.plotLoc(yearly_data)
         stats += '**' + translate['Timeline'] + '**\n\n'
         branch_name = github.get_repo(f'{username}/{username}').default_branch
-#         stats = stats + '![Chart not found](https://raw.githubusercontent.com/' + username + '/' + username + '/' + branch_name + '/charts/bar_graph.png) \n\n'
+        stats = stats + '![Chart not found](https://raw.githubusercontent.com/' + username + '/' + username + '/' + branch_name + '/charts/bar_graph.png) \n\n'
 
     return stats
 
