@@ -312,11 +312,11 @@ def get_waka_time_stats():
             stats = stats + generate_commit_list(tz=data['data']['timezone']) + '\n\n'
 
 #         stats += '📊 **' + translate['This Week I Spend My Time On'] + '** \n\n'
-        stats += '```text\n'
+        stats += '\n'
         if showTimeZone.lower() in truthy:
             empty = False
             tzone = data['data']['timezone']
-            stats = stats + '⌚︎ ' + translate['Timezone'] + ': ' + tzone + '\n\n'
+            stats = stats + '⌚︎ ' + '时区' + ': ' + tzone + '\n\n'
 
         if showLanguage.lower() in truthy:
             empty = False
